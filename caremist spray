@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caremist - Stay Fresh Stay Confident</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --soft-blue: #A8D8EA;
+            --soft-pink: #FFB6B9;
+            --soft-yellow: #FFEAA7;
+            --soft-purple: #DDA0DD;
+            --soft-mint: #B5EAD7;
+            --text-dark: #5D5D5D;
+            --text-light: #8B8B8B;
+            --white: #FFFFFF;
+            --cream: #FFF9F0;
+            --strawberry: #FF6B9D;
+            --vanilla: #F4D03F;
+            --natural: #85C1E9;
+            --sweet: #D7BDE2;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FFF9F0 0%, #FFEEF8 50%, #F0F8FF 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Floating Bubbles Background */
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(168, 216, 234, 0.3);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+        }
+
+        .bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 12s; background: rgba(255, 182, 185, 0.3); }
+        .bubble:nth-child(2) { width: 20px; height: 20px; left: 20%; animation-duration: 18s; animation-delay: 1s; background: rgba(255, 234, 167, 0.3); }
+        .bubble:nth-child(3) { width: 50px; height: 50px; left: 35%; animation-duration: 14s; animation-delay: 2s; background: rgba(181, 234, 215, 0.3); }
+        .bubble:nth-child(4) { width: 30px; height: 30px; left: 50%; animation-duration: 16s; animation-delay: 0s; background: rgba(221, 160, 221, 0.3); }
+        .bubble:nth-child(5) { width: 25px; height: 25px; left: 65%; animation-duration: 13s; animation-delay: 3s; background: rgba(168, 216, 234, 0.3); }
+        .bubble:nth-child(6) { width: 45px; height: 45px; left: 80%; animation-duration: 17s; animation-delay: 1s; background: rgba(255, 182, 185, 0.3); }
+
+        @keyframes rise {
+            0% { bottom: -100px; transform: translateX(0); }
+            50% { transform: translateX(100px); }
+            100% { bottom: 1080px; transform: translateX(-200px); }
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            -webkit-text-fill-color: var(--soft-pink);
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: -5px;
+            display: block;
+            -webkit-text-fill-color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--soft-pink), var(--soft-blue));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--soft-pink);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 5%;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-content .tagline-hero {
+            font-size: 1.3rem;
+            color: var(--soft-pink);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 182, 185, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 182, 185, 0.6);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--soft-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--soft-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-next {
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            color: white;
+            width: 100%;
+            justify-content: center;
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 182, 185, 0.4);
+        }
+
+        .btn-back {
+            background: #f0f0f0;
+            color: var(--text-dark);
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-showcase {
+            width: 450px;
+            height: 550px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.5);
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .product-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-showcase:hover img {
+            transform: scale(1.05);
+        }
+
+        .badge-ekonomis {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, var(--soft-yellow), #FFD93D);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .float-item {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-item:nth-child(1) { top: 10%; left: -10%; animation-delay: 0s; color: var(--soft-pink); }
+        .float-item:nth-child(2) { top: 60%; right: -10%; animation-delay: 2s; color: var(--soft-yellow); }
+        .float-item:nth-child(3) { bottom: 10%; left: 10%; animation-delay: 4s; color: var(--soft-mint); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #FFF9F0, #FFEEF8);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--soft-pink);
+            box-shadow: 0 10px 30px rgba(255, 182, 185, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-card:nth-child(1) .feature-icon { color: var(--strawberry); }
+        .feature-card:nth-child(2) .feature-icon { color: var(--vanilla); }
+        .feature-card:nth-child(3) .feature-icon { color: var(--natural); }
+        .feature-card:nth-child(4) .feature-icon { color: var(--sweet); }
+
+        .feature-card h3 {
+            font-family: 'Nunito', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #FFEEF8, #F0F8FF);
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 1rem;
+        }
+
+        .product-card:nth-child(1) .product-image { background: linear-gradient(135deg, #FFE5EC, #FFF0F5); }
+        .product-card:nth-child(2) .product-image { background: linear-gradient(135deg, #FFF8DC, #FFFACD); }
+        .product-card:nth-child(3) .product-image { background: linear-gradient(135deg, #E0F2F7, #E8F6F3); }
+        .product-card:nth-child(4) .product-image { background: linear-gradient(135deg, #F3E5F5, #E1F5FE); }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FF4757;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .variant-name {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card:nth-child(1) .variant-name { background: #FFE5EC; color: var(--strawberry); }
+        .product-card:nth-child(2) .variant-name { background: #FFF8DC; color: #D4AC0D; }
+        .product-card:nth-child(3) .variant-name { background: #E0F2F7; color: #2E86AB; }
+        .product-card:nth-child(4) .variant-name { background: #F3E5F5; color: #8E44AD; }
+
+        .product-info h3 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .price-container {
+            margin-bottom: 1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        .discounted-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #FF4757;
+        }
+
+        .btn-order {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-order:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 182, 185, 0.4);
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(90deg, #FF6B9D, #C44569);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* How to Use Section */
+        .how-to-use {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 2rem;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--strawberry), var(--vanilla), var(--natural), var(--sweet));
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 4px solid var(--soft-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--soft-pink);
+            margin: 0 auto 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .step:nth-child(2) .step-number { border-color: var(--vanilla); color: var(--vanilla); }
+        .step:nth-child(3) .step-number { border-color: var(--natural); color: var(--natural); }
+        .step:nth-child(4) .step-number { border-color: var(--sweet); color: var(--sweet); }
+
+        .step h4 {
+            font-family: 'Nunito', sans-serif;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            padding: 0 1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--soft-pink), var(--soft-blue));
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .cta h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 5% 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-family: 'Nunito', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--soft-pink);
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--soft-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--soft-pink);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            color: #888;
+        }
+
+        /* Multi-Step Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+
+        .close:hover {
+            color: var(--soft-pink);
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            transform: scale(1.2);
+        }
+
+        .step-dot.completed {
+            background: #2ECC71;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--soft-blue);
+            box-shadow: 0 0 0 3px rgba(168, 216, 234, 0.2);
+        }
+
+        /* Product Selection Grid */
+        .product-selection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-option {
+            border: 3px solid #eee;
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: white;
+        }
+
+        .product-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-option.selected {
+            border-color: var(--soft-pink);
+            background: #FFF0F3;
+        }
+
+        .product-option img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+        }
+
+        .product-option h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+
+        .product-option .price {
+            font-size: 0.85rem;
+            color: #FF4757;
+            font-weight: 700;
+        }
+
+        .check-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            background: var(--soft-pink);
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .product-option.selected .check-icon {
+            display: flex;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .qty-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .qty-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* Pickup Styles */
+        .pickup-location {
+            background: linear-gradient(135deg, #E3F2FD, #F3E5F5);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border: 2px solid var(--soft-blue);
+        }
+
+        .pickup-location i {
+            font-size: 2.5rem;
+            color: var(--soft-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .pickup-location h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .pickup-location p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .date-selection, .time-selection {
+            margin-bottom: 1.5rem;
+        }
+
+        .date-grid, .time-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .date-option, .time-option {
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .date-option:hover, .time-option:hover {
+            border-color: var(--soft-blue);
+            background: #F0F8FF;
+        }
+
+        .date-option.selected, .time-option.selected {
+            border-color: var(--soft-pink);
+            background: #FFF0F3;
+            color: var(--text-dark);
+        }
+
+        .date-option .day {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .date-option .date-num {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .time-option {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Payment Styles */
+        .payment-container {
+            text-align: center;
+        }
+
+        .timer-container {
+            background: #FFF3CD;
+            border: 2px solid #FFC107;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timer-display {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FF4757;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .timer-label {
+            color: #856404;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .qris-container {
+            background: white;
+            border: 3px solid #eee;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .qris-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .qris-image {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .payment-instructions {
+            background: #F8F9FA;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-instructions h4 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .payment-instructions ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .payment-instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .order-summary {
+            background: linear-gradient(135deg, #FFF0F3, #F0F8FF);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .order-summary h4 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #FF4757;
+        }
+
+        .btn-confirm {
+            background: #25D366;
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-confirm:hover {
+            background: #128C7E;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .steps-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .product-showcase {
+                width: 100%;
+                height: 400px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-selection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .date-grid, .time-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--soft-pink), var(--soft-blue));
+            border-radius: 5px;
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3000;
+        }
+
+        .loader-circle {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--soft-pink);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .size-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(255,255,255,0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .error-message {
+            color: #FF4757;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .form-group.error input {
+            border-color: #FF4757;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        🎉 PROMO SPESIAL! Hanya Rp 12.000 (dari Rp 15.000) - Botol Sprayer 60ml Praktis & Ekonomis! 🎉
+    </div>
+
+    <!-- Floating Bubbles Background -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-spray-can"></i>
+                Caremist
+                <span class="tagline">STAY FRESH STAY CONFIDENT</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#features">Keunggulan</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#how-to-use">Cara Pakai</a></li>
+                <li><a href="#contact">Pesan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Caremist</h1>
+                <div class="tagline-hero">STAY FRESH STAY CONFIDENT</div>
+                <p>Deodorant tawas spray alami dengan 4 varian wangi lembut. Botol sprayer 60ml yang praktis dibawa ke mana saja. Formula aman, tidak menyebabkan iritasi, dan tahan lama!</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i> Pesan Sekarang Rp 12.000
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i> Pelajari Lebih
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-elements">
+                    <div class="float-item"><i class="fas fa-cloud"></i></div>
+                    <div class="float-item"><i class="fas fa-leaf"></i></div>
+                    <div class="float-item"><i class="fas fa-sun"></i></div>
+                </div>
+                <div class="product-showcase">
+                    <span class="badge-ekonomis">60ml Ekonomis</span>
+                    <!-- Sweet Baby untuk Hero -->
+                    <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0033.jpg" 
+                         alt="Caremist Sweet Baby" 
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22%3E%3Crect fill=%22%23FFB6B9%22 width=%22400%22 height=%22500%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2260%22%3E%3Ci class=%22fas fa-spray-can%22%3E%3C/i%3E%3C/text%3E%3C/svg%3E'">
+                    <div class="size-info">
+                        <i class="fas fa-bottle-droplet"></i> Botol Sprayer 60ml
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>✨ Keunggulan Caremist</h2>
+            <p>Mengapa memilih deodorant tawas spray kami?</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>100% Alami</h3>
+                <p>Terbuat dari tawas (aluminum sulfate) murni dengan ekstrak buah alami. Aman untuk kulit sensitif.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-pump-soap"></i>
+                </div>
+                <h3>Botol Sprayer 60ml</h3>
+                <p>Desain praktis dan ekonomis. Mudah disemprotkan, tidak tumpah, dan pas di tas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h3>Cepat Kering</h3>
+                <p>Formula cepat meresap tanpa rasa lengket. Tidak meninggalkan noda di pakaian.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>4 Varian Wangi</h3>
+                <p>Pilih aroma favoritmu: Strawmellow, Vanilla Cake, Natural, atau Sweet Baby.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>🌸 Pilihan Varian Caremist</h2>
+            <p>Semua varian hanya Rp 12.000 (Promo dari Rp 15.000)</p>
+        </div>
+        <div class="products-grid">
+            <!-- Product 1: Strawmellow -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">-20%</span>
+                    <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0035.jpg" 
+                         alt="Caremist Strawmellow"
+                         onerror="this.parentElement.innerHTML='<span class=\'product-badge\'>-20%</span><div style=\'width:150px;height:200px;background:#FFE5EC;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#FF6B9D;\'><i class=\'fas fa-apple-alt\'></i></div>'">
+                </div>
+                <div class="product-info">
+                    <span class="variant-name">STRAWMELLOW</span>
+                    <h3>Strawberry Marshmallow</h3>
+                    <p>Aroma stroberi manis yang segar dan playful. Cocok untuk mood ceria!</p>
+                    <div class="price-container">
+                        <span class="original-price">Rp 15.000</span>
+                        <span class="discounted-price">Rp 12.000</span>
+                    </div>
+                    <button class="btn-order" onclick="startOrder()">
+                        <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2: Vanilla Cake -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">-20%</span>
+                    <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0029.jpg" 
+                         alt="Caremist Vanilla Cake"
+                         onerror="this.parentElement.innerHTML='<span class=\'product-badge\'>-20%</span><div style=\'width:150px;height:200px;background:#FFF8DC;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#F4D03F;\'><i class=\'fas fa-birthday-cake\'></i></div>'">
+                </div>
+                <div class="product-info">
+                    <span class="variant-name">VANILLA CAKE</span>
+                    <h3>Vanilla Cake</h3>
+                    <p>Aroma vanila hangat yang manis dan nyaman. Sensasi seperti kue freshly baked!</p>
+                    <div class="price-container">
+                        <span class="original-price">Rp 15.000</span>
+                        <span class="discounted-price">Rp 12.000</span>
+                    </div>
+                    <button class="btn-order" onclick="startOrder()">
+                        <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3: Natural -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">-20%</span>
+                    <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0031.jpg" 
+                         alt="Caremist Natural"
+                         onerror="this.parentElement.innerHTML='<span class=\'product-badge\'>-20%</span><div style=\'width:150px;height:200px;background:#E0F2F7;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#85C1E9;\'><i class=\'fas fa-gem\'></i></div>'">
+                </div>
+                <div class="product-info">
+                    <span class="variant-name">NATURAL</span>
+                    <h3>Natural Fresh</h3>
+                    <p>Aroma tawas murni tanpa pewangi tambahan. Pilihan terbaik untuk kulit sensitif.</p>
+                    <div class="price-container">
+                        <span class="original-price">Rp 15.000</span>
+                        <span class="discounted-price">Rp 12.000</span>
+                    </div>
+                    <button class="btn-order" onclick="startOrder()">
+                        <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 4: Sweet Baby -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">-20%</span>
+                    <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0033.jpg" 
+                         alt="Caremist Sweet Baby"
+                         onerror="this.parentElement.innerHTML='<span class=\'product-badge\'>-20%</span><div style=\'width:150px;height:200px;background:#F3E5F5;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#D7BDE2;\'><i class=\'fas fa-baby\'></i></div>'">
+                </div>
+                <div class="product-info">
+                    <span class="variant-name">SWEET BABY</span>
+                    <h3>Sweet Baby Powder</h3>
+                    <p>Aroma bayi yang lembut dan calming. Memberikan kesan bersih sepanjang hari.</p>
+                    <div class="price-container">
+                        <span class="original-price">Rp 15.000</span>
+                        <span class="discounted-price">Rp 12.000</span>
+                    </div>
+                    <button class="btn-order" onclick="startOrder()">
+                        <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section class="how-to-use" id="how-to-use">
+        <div class="section-title">
+            <h2>🌟 Cara Penggunaan</h2>
+            <p>Empat langkah mudah untuk kesegaran sepanjang hari</p>
+        </div>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Kocok</h4>
+                <p>Kocok botol sebelum digunakan agar isi tercampur rata</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Semprot</h4>
+                <p>Semprotkan pada ketiak atau area lain yang diinginkan</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Tunggu</h4>
+                <p>Biarkan beberapa saat hingga meresap sempurna</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Siap!</h4>
+                <p>Nikmati kesegaran alami sepanjang hari</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <h2>Siap Stay Fresh & Confident?</h2>
+        <p>Pesan sekarang hanya Rp 12.000 (Promo dari Rp 15.000)!<br>Botol sprayer 60ml praktis & ekonomis</p>
+        <button class="btn btn-primary" onclick="startOrder()" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+            <i class="fas fa-shopping-bag"></i> Pesan Sekarang
+        </button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Caremist</h4>
+                <p>Stay Fresh Stay Confident<br>Deodorant tawas alami dengan 4 varian wangi favorit. Botol sprayer 60ml praktis & ekonomis.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/qr/3BFP46LQV7TMP1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Kontak</h4>
+                <p><i class="fas fa-envelope"></i> caremistspray@gmail.com</p>
+                <p><i class="fas fa-phone"></i> WhatsApp QR</p>
+                <p><i class="fas fa-map-marker-alt"></i> GKM FEB Unair</p>
+            </div>
+            <div class="footer-section">
+                <h4>Link Cepat</h4>
+                <p><a href="#features">Keunggulan</a></p>
+                <p><a href="#products">Produk</a></p>
+                <p><a href="#how-to-use">Cara Pakai</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Caremist. Stay Fresh Stay Confident 💖</p>
+        </div>
+    </footer>
+
+    <!-- Multi-Step Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step-dot active" id="dot-1"></div>
+                <div class="step-dot" id="dot-2"></div>
+                <div class="step-dot" id="dot-3"></div>
+                <div class="step-dot" id="dot-4"></div>
+            </div>
+
+            <!-- Step 1: Customer Info -->
+            <div class="form-step active" id="step-1">
+                <h2 style="font-family: 'Nunito', sans-serif; color: var(--text-dark); margin-bottom: 0.5rem; text-align: center;">
+                    Data Pembeli
+                </h2>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem; font-size: 0.9rem;">
+                    Masukkan data Anda untuk melanjutkan pemesanan
+                </p>
+                
+                <div class="form-group" id="name-group">
+                    <label><i class="fas fa-user" style="color: var(--soft-pink);"></i> Nama Lengkap</label>
+                    <input type="text" id="customerName" placeholder="Masukkan nama lengkap Anda" required>
+                    <span class="error-message">Nama harus diisi</span>
+                </div>
+                
+                <div class="form-group" id="phone-group">
+                    <label><i class="fab fa-whatsapp" style="color: #25D366;"></i> Nomor WhatsApp</label>
+                    <input type="tel" id="customerPhone" placeholder="08xxxxxxxxxx" required>
+                    <span class="error-message">Nomor WhatsApp harus diisi</span>
+                </div>
+
+                <button class="btn btn-next" onclick="nextStep(1)">
+                    Lanjutkan <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Step 2: Product Selection -->
+            <div class="form-step" id="step-2">
+                <h2 style="font-family: 'Nunito', sans-serif; color: var(--text-dark); margin-bottom: 0.5rem; text-align: center;">
+                    Pilih Varian
+                </h2>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem; font-size: 0.9rem;">
+                    Pilih varian Caremist favorit Anda
+                </p>
+
+                <div class="product-selection-grid">
+                    <div class="product-option" onclick="selectProduct('Strawmellow', 12000)">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0035.jpg" 
+                             alt="Strawmellow"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div style="width:80px;height:80px;background:#FFE5EC;border-radius:10px;display:none;align-items:center;justify-content:center;font-size:2rem;color:#FF6B9D;margin:0 auto 0.5rem;">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h4>Strawmellow</h4>
+                        <div class="price">Rp 12.000</div>
+                    </div>
+                    <div class="product-option" onclick="selectProduct('Vanilla Cake', 12000)">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0029.jpg" 
+                             alt="Vanilla Cake"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div style="width:80px;height:80px;background:#FFF8DC;border-radius:10px;display:none;align-items:center;justify-content:center;font-size:2rem;color:#F4D03F;margin:0 auto 0.5rem;">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <h4>Vanilla Cake</h4>
+                        <div class="price">Rp 12.000</div>
+                    </div>
+                    <div class="product-option" onclick="selectProduct('Natural', 12000)">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0031.jpg" 
+                             alt="Natural"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div style="width:80px;height:80px;background:#E0F2F7;border-radius:10px;display:none;align-items:center;justify-content:center;font-size:2rem;color:#85C1E9;margin:0 auto 0.5rem;">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4>Natural</h4>
+                        <div class="price">Rp 12.000</div>
+                    </div>
+                    <div class="product-option" onclick="selectProduct('Sweet Baby', 12000)">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0033.jpg" 
+                             alt="Sweet Baby"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div style="width:80px;height:80px;background:#F3E5F5;border-radius:10px;display:none;align-items:center;justify-content:center;font-size:2rem;color:#D7BDE2;margin:0 auto 0.5rem;">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <h4>Sweet Baby</h4>
+                        <div class="price">Rp 12.000</div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align: center;">
+                    <label>Jumlah</label>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                        <div class="qty-display" id="quantity">1</div>
+                        <button class="qty-btn" onclick="changeQty(1)">+</button>
+                    </div>
+                </div>
+
+                <button class="btn btn-back" onclick="prevStep(2)">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <button class="btn btn-next" onclick="nextStep(2)">
+                    Lanjutkan <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Step 3: Pickup Schedule -->
+            <div class="form-step" id="step-3">
+                <h2 style="font-family: 'Nunito', sans-serif; color: var(--text-dark); margin-bottom: 0.5rem; text-align: center;">
+                    Jadwal Pengambilan
+                </h2>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem; font-size: 0.9rem;">
+                    Pilih lokasi dan waktu pengambilan
+                </p>
+
+                <div class="pickup-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>GKM FEB Unair</h3>
+                    <p>Gedung Kuliah Mahasiswa Fakultas Ekonomi dan Bisnis<br>Universitas Airlangga</p>
+                </div>
+
+                <div class="date-selection">
+                    <label style="display: block; margin-bottom: 1rem; font-weight: 700;">
+                        <i class="fas fa-calendar-alt" style="color: var(--soft-pink);"></i> Pilih Tanggal
+                    </label>
+                    <div class="date-grid">
+                        <div class="date-option" onclick="selectDate('Senin', '9 Februari 2026', this)">
+                            <div class="day">Senin</div>
+                            <div class="date-num">9 Feb</div>
+                        </div>
+                        <div class="date-option" onclick="selectDate('Selasa', '10 Februari 2026', this)">
+                            <div class="day">Selasa</div>
+                            <div class="date-num">10 Feb</div>
+                        </div>
+                        <div class="date-option" onclick="selectDate('Rabu', '11 Februari 2026', this)">
+                            <div class="day">Rabu</div>
+                            <div class="date-num">11 Feb</div>
+                        </div>
+                        <div class="date-option" onclick="selectDate('Kamis', '12 Februari 2026', this)">
+                            <div class="day">Kamis</div>
+                            <div class="date-num">12 Feb</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-selection">
+                    <label style="display: block; margin-bottom: 1rem; font-weight: 700;">
+                        <i class="fas fa-clock" style="color: var(--soft-blue);"></i> Pilih Jam
+                    </label>
+                    <div class="time-grid">
+                        <div class="time-option" onclick="selectTime('13.00', this)">13.00 WIB</div>
+                        <div class="time-option" onclick="selectTime('14.00', this)">14.00 WIB</div>
+                        <div class="time-option" onclick="selectTime('15.00', this)">15.00 WIB</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-back" onclick="prevStep(3)">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <button class="btn btn-next" onclick="nextStep(3)">
+                    Lanjutkan <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Step 4: Payment -->
+            <div class="form-step" id="step-4">
+                <h2 style="font-family: 'Nunito', sans-serif; color: var(--text-dark); margin-bottom: 0.5rem; text-align: center;">
+                    Pembayaran
+                </h2>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 1.5rem; font-size: 0.9rem;">
+                    Scan QRIS untuk menyelesaikan pembayaran
+                </p>
+
+                <div class="timer-container">
+                    <div class="timer-display" id="timer">02:00</div>
+                    <div class="timer-label">Selesaikan pembayaran dalam waktu yang tersedia</div>
+                </div>
+
+                <div class="order-summary">
+                    <h4>Ringkasan Pesanan</h4>
+                    <div class="summary-item">
+                        <span>Nama:</span>
+                        <span id="summary-name">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Produk:</span>
+                        <span id="summary-product">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Jumlah:</span>
+                        <span id="summary-qty">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Pengambilan:</span>
+                        <span id="summary-pickup">-</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="summary-total">Rp 0</span>
+                    </div>
+                </div>
+
+                <div class="qris-container">
+                    <div class="qris-label">
+                        <i class="fas fa-qrcode"></i> Scan QRIS
+                    </div>
+                    <!-- QRIS Image -->
+                    <img src="https://raw.githubusercontent.com/tspray-cell/tspray-cell.github.io/main/IMG-20260207-WA0048.jpg" 
+                         alt="QRIS Payment" 
+                         class="qris-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div style="display:none;width:250px;height:250px;background:#f0f0f0;border:3px dashed #ccc;border-radius:15px;margin:0 auto;align-items:center;justify-content:center;flex-direction:column;color:#999;">
+                        <i class="fas fa-qrcode" style="font-size:4rem;margin-bottom:1rem;"></i>
+                        <span>QRIS Code</span>
+                    </div>
+                </div>
+
+                <div class="payment-instructions">
+                    <h4><i class="fas fa-info-circle" style="color: var(--soft-blue);"></i> Cara Pembayaran:</h4>
+                    <ol>
+                        <li>Buka aplikasi e-wallet (OVO, GoPay, DANA, ShopeePay, dll)</li>
+                        <li>Pilih menu "Scan QR" atau "Bayar"</li>
+                        <li>Scan kode QRIS di atas</li>
+                        <li>Masukkan nominal sesuai total pembayaran</li>
+                        <li>Konfirmasi pembayaran</li>
+                        <li>Klik tombol "Konfirmasi Pembayaran" di bawah</li>
+                    </ol>
+                </div>
+
+                <button class="btn btn-back" onclick="prevStep(4)">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <button class="btn btn-confirm" onclick="confirmPayment()">
+                    <i class="fas fa-check-circle"></i> Konfirmasi Pembayaran
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <script>
+        // Global Variables
+        let currentStep = 1;
+        let orderData = {
+            name: '',
+            phone: '',
+            product: '',
+            price: 0,
+            qty: 1,
+            date: '',
+            time: ''
+        };
+        let timerInterval;
+        let timeLeft = 120; // 2 minutes in seconds
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Modal Functions
+        function startOrder() {
+            document.getElementById('orderModal').style.display = 'flex';
+            resetOrder();
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            clearInterval(timerInterval);
+        }
+
+        function resetOrder() {
+            currentStep = 1;
+            orderData = { name: '', phone: '', product: '', price: 0, qty: 1, date: '', time: '' };
+            timeLeft = 120;
+            
+            // Reset all steps
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step-1').classList.add('active');
+            
+            // Reset dots
+            document.querySelectorAll('.step-dot').forEach((dot, index) => {
+                dot.classList.remove('active', 'completed');
+                if (index === 0) dot.classList.add('active');
+            });
+            
+            // Reset inputs
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('quantity').textContent = '1';
+            
+            // Reset selections
+            document.querySelectorAll('.product-option').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.time-option').forEach(el => el.classList.remove('selected'));
+            
+            // Clear errors
+            document.querySelectorAll('.form-group').forEach(el => el.classList.remove('error'));
+            
+            clearInterval(timerInterval);
+        }
+
+        // Step Navigation
+        function nextStep(step) {
+            if (step === 1) {
+                // Validate Step 1
+                const name = document.getElementById('customerName').value.trim();
+                const phone = document.getElementById('customerPhone').value.trim();
+                
+                let valid = true;
+                
+                if (!name) {
+                    document.getElementById('name-group').classList.add('error');
+                    valid = false;
+                } else {
+                    document.getElementById('name-group').classList.remove('error');
+                    orderData.name = name;
+                }
+                
+                if (!phone) {
+                    document.getElementById('phone-group').classList.add('error');
+                    valid = false;
+                } else {
+                    document.getElementById('phone-group').classList.remove('error');
+                    orderData.phone = phone;
+                }
+                
+                if (!valid) return;
+            }
+            
+            if (step === 2) {
+                // Validate Step 2
+                if (!orderData.product) {
+                    alert('Silakan pilih varian produk terlebih dahulu!');
+                    return;
+                }
+                orderData.qty = parseInt(document.getElementById('quantity').textContent);
+            }
+            
+            if (step === 3) {
+                // Validate Step 3
+                if (!orderData.date) {
+                    alert('Silakan pilih tanggal pengambilan!');
+                    return;
+                }
+                if (!orderData.time) {
+                    alert('Silakan pilih jam pengambilan!');
+                    return;
+                }
+                
+                // Update summary
+                updateSummary();
+                // Start timer
+                startTimer();
+            }
+            
+            // Update UI
+            document.getElementById(`step-${step}`).classList.remove('active');
+            document.getElementById(`step-${step + 1}`).classList.add('active');
+            
+            // Update dots
+            document.getElementById(`dot-${step}`).classList.remove('active');
+            document.getElementById(`dot-${step}`).classList.add('completed');
+            document.getElementById(`dot-${step + 1}`).classList.add('active');
+            
+            currentStep = step + 1;
+        }
+
+        function prevStep(step) {
+            document.getElementById(`step-${step}`).classList.remove('active');
+            document.getElementById(`step-${step - 1}`).classList.add('active');
+            
+            document.getElementById(`dot-${step}`).classList.remove('active');
+            document.getElementById(`dot-${step - 1}`).classList.remove('completed');
+            document.getElementById(`dot-${step - 1}`).classList.add('active');
+            
+            currentStep = step - 1;
+            
+            if (step === 4) {
+                clearInterval(timerInterval);
+            }
+        }
+
+        // Product Selection
+        function selectProduct(name, price) {
+            orderData.product = name;
+            orderData.price = price;
+            
+            document.querySelectorAll('.product-option').forEach(el => el.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        function changeQty(delta) {
+            const qtyEl = document.getElementById('quantity');
+            let current = parseInt(qtyEl.textContent);
+            current += delta;
+            if (current < 1) current = 1;
+            qtyEl.textContent = current;
+        }
+
+        // Date & Time Selection
+        function selectDate(day, date, element) {
+            orderData.date = `${day}, ${date}`;
+            document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function selectTime(time, element) {
+            orderData.time = time;
+            document.querySelectorAll('.time-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        // Summary Update
+        function updateSummary() {
+            document.getElementById('summary-name').textContent = orderData.name;
+            document.getElementById('summary-product').textContent = orderData.product;
+            document.getElementById('summary-qty').textContent = orderData.qty + ' pcs';
+            document.getElementById('summary-pickup').textContent = `${orderData.date} jam ${orderData.time}`;
+            document.getElementById('summary-total').textContent = 'Rp ' + (orderData.price * orderData.qty).toLocaleString('id-ID');
+        }
+
+        // Timer Function
+        function startTimer() {
+            timeLeft = 120;
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Waktu pembayaran habis! Silakan ulangi pemesanan.');
+                    closeOrderModal();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Confirm Payment
+        function confirmPayment() {
+            const total = orderData.price * orderData.qty;
+            
+            const message = `*KONFIRMASI PEMBAYARAN CAREMIST*%0A%0A` +
+                          `*Data Pemesan:*%0A` +
+                          `Nama: ${orderData.name}%0A` +
+                          `No. HP: ${orderData.phone}%0A%0A` +
+                          `*Detail Pesanan:*%0A` +
+                          `Produk: Caremist ${orderData.product}%0A` +
+                          `Jumlah: ${orderData.qty} pcs%0A` +
+                          `Total: Rp ${total.toLocaleString('id-ID')}%0A%0A` +
+                          `*Pengambilan:*%0A` +
+                          `Lokasi: GKM FEB Unair%0A` +
+                          `Tanggal: ${orderData.date}%0A` +
+                          `Jam: ${orderData.time} WIB%0A%0A` +
+                          `*Status:* Pembayaran QRIS telah dilakukan ✅%0A%0A` +
+                          `Terima kasih! Stay Fresh Stay Confident 🌸`;
+
+            const whatsappURL = `https://wa.me/qr/3BFP46LQV7TMP1?text=${message}`;
+            
+            window.open(whatsappURL, '_blank');
+            closeOrderModal();
+            alert('Terima kasih! Pesanan Anda akan segera diproses. Silakan cek WhatsApp untuk konfirmasi.');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                closeOrderModal();
+            }
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.feature-card, .product-card').forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.6s ease";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
