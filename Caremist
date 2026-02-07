@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caremist - Stay Fresh Stay Confident</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --soft-blue: #A8D8EA;
+            --soft-pink: #FFB6B9;
+            --soft-yellow: #FFEAA7;
+            --text-dark: #5D5D5D;
+            --text-light: #8B8B8B;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FFF9F0 0%, #FFEEF8 50%, #F0F8FF 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        /* Hero */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 5%;
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--soft-pink);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            margin: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            color: white;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .section h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .strawberry { background: #FF6B9D; }
+        .vanilla { background: #F4D03F; }
+        .natural { background: #85C1E9; }
+        .sweet { background: #D7BDE2; }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .discounted-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FF4757;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .btn-next {
+            background: linear-gradient(45deg, var(--soft-pink), var(--soft-blue));
+            color: white;
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .step { display: none; }
+        .step.active { display: block; }
+        
+        .timer {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #FF4757;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .qris-box {
+            width: 200px;
+            height: 200px;
+            background: #f0f0f0;
+            border: 3px dashed #ccc;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #999;
+        }
+        
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-spray-can"></i> Caremist
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#order" onclick="startOrder()">Pesan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Caremist</h1>
+            <div class="tagline">STAY FRESH STAY CONFIDENT</div>
+            <p>Deodorant tawas spray alami dengan 4 varian wangi lembut.<br>Botol sprayer 60ml praktis & ekonomis!</p>
+            <button class="btn btn-primary" onclick="startOrder()">
+                <i class="fas fa-shopping-bag"></i> Pesan Sekarang Rp 12.000
+            </button>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section" id="products">
+        <h2>🌸 Pilihan Varian</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon strawberry">
+                    <i class="fas fa-apple-alt"></i>
+                </div>
+                <h3>Strawmellow</h3>
+                <p>Aroma stroberi manis</p>
+                <span class="original-price">Rp 15.000</span>
+                <div class="discounted-price">Rp 12.000</div>
+                <button class="btn btn-primary" onclick="startOrder('Strawmellow')" style="margin-top:1rem;">
+                    Pesan
+                </button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-icon vanilla">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <h3>Vanilla Cake</h3>
+                <p>Aroma vanila hangat</p>
+                <span class="original-price">Rp 15.000</span>
+                <div class="discounted-price">Rp 12.000</div>
+                <button class="btn btn-primary" onclick="startOrder('Vanilla Cake')" style="margin-top:1rem;">
+                    Pesan
+                </button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-icon natural">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3>Natural</h3>
+                <p>Tawas murni</p>
+                <span class="original-price">Rp 15.000</span>
+                <div class="discounted-price">Rp 12.000</div>
+                <button class="btn btn-primary" onclick="startOrder('Natural')" style="margin-top:1rem;">
+                    Pesan
+                </button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-icon sweet">
+                    <i class="fas fa-baby"></i>
+                </div>
+                <h3>Sweet Baby</h3>
+                <p>Aroma bayi lembut</p>
+                <span class="original-price">Rp 15.000</span>
+                <div class="discounted-price">Rp 12.000</div>
+                <button class="btn btn-primary" onclick="startOrder('Sweet Baby')" style="margin-top:1rem;">
+                    Pesan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" style="float:right;font-size:1.5rem;cursor:pointer;">&times;</span>
+            
+            <!-- Step 1 -->
+            <div class="step active" id="step1">
+                <h3>Data Pembeli</h3>
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama">
+                </div>
+                <div class="form-group">
+                    <label>Nomor WhatsApp</label>
+                    <input type="tel" id="wa" placeholder="08xxxxxxxxxx">
+                </div>
+                <button class="btn btn-next" onclick="nextStep(1)">Lanjutkan</button>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="step" id="step2">
+                <h3>Pilih Varian</h3>
+                <div class="form-group">
+                    <label>Varian</label>
+                    <select id="varian">
+                        <option value="Strawmellow">Strawmellow</option>
+                        <option value="Vanilla Cake">Vanilla Cake</option>
+                        <option value="Natural">Natural</option>
+                        <option value="Sweet Baby">Sweet Baby</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="number" id="jumlah" value="1" min="1">
+                </div>
+                <button class="btn btn-next" onclick="nextStep(2)">Lanjutkan</button>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="step" id="step3">
+                <h3>Jadwal Pengambilan</h3>
+                <p style="margin-bottom:1rem;"><strong>GKM FEB Unair</strong></p>
+                <div class="form-group">
+                    <label>Tanggal</label>
+                    <select id="tanggal">
+                        <option value="Senin, 9 Feb 2026">Senin, 9 Feb 2026</option>
+                        <option value="Selasa, 10 Feb 2026">Selasa, 10 Feb 2026</option>
+                        <option value="Rabu, 11 Feb 2026">Rabu, 11 Feb 2026</option>
+                        <option value="Kamis, 12 Feb 2026">Kamis, 12 Feb 2026</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jam</label>
+                    <select id="jam">
+                        <option value="13.00">13.00 WIB</option>
+                        <option value="14.00">14.00 WIB</option>
+                        <option value="15.00">15.00 WIB</option>
+                    </select>
+                </div>
+                <button class="btn btn-next" onclick="nextStep(3)">Lanjutkan</button>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="step" id="step4">
+                <h3>Pembayaran QRIS</h3>
+                <div class="timer" id="timer">02:00</div>
+                <div class="qris-box">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <p>Scan QRIS dengan e-wallet Anda</p>
+                <button class="btn btn-next" onclick="confirmOrder()">
+                    Konfirmasi Pembayaran
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Caremist</strong> - Stay Fresh Stay Confident</p>
+        <p>📧 caremistspray@gmail.com | 📍 GKM FEB Unair</p>
+        <p style="margin-top:1rem;">&copy; 2026 Caremist</p>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        let timerInterval;
+        
+        function startOrder(varian) {
+            document.getElementById('orderModal').style.display = 'flex';
+            if(varian) document.getElementById('varian').value = varian;
+        }
+        
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            clearInterval(timerInterval);
+            resetSteps();
+        }
+        
+        function resetSteps() {
+            currentStep = 1;
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
+        }
+        
+        function nextStep(step) {
+            // Validasi
+            if(step === 1) {
+                if(!document.getElementById('nama').value || !document.getElementById('wa').value) {
+                    alert('Isi nama dan nomor WA!');
+                    return;
+                }
+            }
+            
+            document.getElementById('step' + step).classList.remove('active');
+            document.getElementById('step' + (step + 1)).classList.add('active');
+            currentStep = step + 1;
+            
+            if(currentStep === 4) startTimer();
+        }
+        
+        function startTimer() {
+            let time = 120;
+            timerInterval = setInterval(() => {
+                time--;
+                let min = Math.floor(time / 60);
+                let sec = time % 60;
+                document.getElementById('timer').textContent = 
+                    (min < 10 ? '0' : '') + min + ':' + (sec < 10 ? '0' : '') + sec;
+                
+                if(time <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Waktu habis!');
+                    closeModal();
+                }
+            }, 1000);
+        }
+        
+        function confirmOrder() {
+            let nama = document.getElementById('nama').value;
+            let wa = document.getElementById('wa').value;
+            let varian = document.getElementById('varian').value;
+            let jumlah = document.getElementById('jumlah').value;
+            let tanggal = document.getElementById('tanggal').value;
+            let jam = document.getElementById('jam').value;
+            let total = 12000 * jumlah;
+            
+            let msg = `*KONFIRMASI PEMBAYARAN CAREMIST*%0A%0A` +
+                     `Nama: ${nama}%0A` +
+                     `WA: ${wa}%0A` +
+                     `Produk: ${varian}%0A` +
+                     `Jumlah: ${jumlah}%0A` +
+                     `Total: Rp ${total.toLocaleString()}%0A` +
+                     `Pengambilan: ${tanggal} jam ${jam}%0A` +
+                     `Lokasi: GKM FEB Unair%0A%0A` +
+                     `Status: Pembayaran QRIS ✅`;
+            
+            window.open(`https://wa.me/qr/3BFP46LQV7TMP1?text=${msg}`, '_blank');
+            closeModal();
+        }
+        
+        // Close modal when click outside
+        window.onclick = function(e) {
+            if(e.target == document.getElementById('orderModal')) closeModal();
+        }
+    </script>
+</body>
+</html>
